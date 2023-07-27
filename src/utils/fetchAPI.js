@@ -7,9 +7,10 @@ const options = {
    method: 'GET',
    url: BASE_URL,
    params: {
-      part: 'snippet',
-      videoId: 'M7FIvfx5J10',
-      maxResults: '5'
+      part: 'snippet, id',
+      maxResults: '4',
+      regionCode: 'ID',
+      order: 'date',
    },
    headers: {
       'X-RapidAPI-Key': ENV_KEY_API,

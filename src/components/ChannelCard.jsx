@@ -1,7 +1,15 @@
+import { Box, CardContent } from "@mui/material"
+import { Link } from "react-router-dom"
 
 const ChannelCard = () => {
   return (
-    <div></div>
+    <Box>
+      <Link>
+        <CardContent>
+          
+        </CardContent>
+      </Link>
+    </Box>
   )
 }
 
