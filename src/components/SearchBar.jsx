@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { Paper, IconButton } from "@mui/material"
 
 import { SearchRounded } from "@mui/icons-material"
@@ -20,8 +19,10 @@ const SearchBar = () => {
          <input 
          className="search-bar"
          placeholder="Do u search something?"
-         value=''
-         onChange={() => {}} />
+         value={search}
+         onChange={(e) => {
+            console.log(e.target.value)
+            setSearch(e.target.value)}} />
          <IconButton>
             <SearchRounded/>
          </IconButton>
