@@ -16,7 +16,7 @@ const VideoCard = ({ video: {id: videoId, snippet} }) => {
                sx={{ height: '180px', width: '358px'  }}
             />
             <CardContent 
-               sx={{ backgroundColor: '#1e1e1e',height: '160px' }}
+               sx={{ backgroundColor: '#1e1e1e',height: '120px' }}
             >
                <Link to={videoId ? `/channel/${videoId}` : 'none'}>
                   <Typography
