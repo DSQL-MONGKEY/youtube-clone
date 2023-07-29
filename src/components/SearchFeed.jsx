@@ -26,13 +26,12 @@ const SearchFeed = () => {
           fontWeight='bold' 
           mb={2} 
           sx={{ color: 'white' }}>
-          Search result for: 
+          Search result for: &nbsp;
           <span 
             style={{ 
               color: '#F31503'}}>
               { searchTerm }
-          </span>
-          Videos
+          </span> Videos
         </Typography>
         <Videos videos={videos} />
       </Box>
