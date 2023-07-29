@@ -19,8 +19,12 @@ const options = {
 };
 
 const fetchAPI = async (url) => {
-   const { data } = await axios.get(`${BASE_URL}/${url}`, options)
-   return data
+   try {
+      const { data } = await axios.get(`${BASE_URL}/${url}`, options)
+      return data
+   } catch(err) {
+      console.log(err.message)
+   }
 }
 
 export default fetchAPI 
