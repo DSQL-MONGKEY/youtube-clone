@@ -49,4 +49,10 @@ VideoCard.propTypes = {
    video: PropTypes.any,
 }
 
+/*
+<Parent: Feed.jsx>
+<ParentChild: Videos.jsx>
+Komponen ini bertugas untuk menampilkan video dalam bentuk card yang dimana datanya berasa dari komponen Videos
+*/
+
 export default VideoCard

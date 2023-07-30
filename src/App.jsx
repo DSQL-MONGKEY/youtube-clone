@@ -26,7 +26,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Feed/>} />
           <Route path="/video/:id" element={<VideoDetail />} />
-          <Route path="/video/:id" element={<ChannelDetail />} />
+          <Route path="/channelDetail/:id" element={<ChannelDetail />} />
           <Route path="/search/:searchTerm" element={<SearchFeed />} />
         </Routes>
       </Box>

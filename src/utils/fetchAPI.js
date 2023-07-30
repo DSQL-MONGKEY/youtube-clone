@@ -7,7 +7,7 @@ const options = {
    method: 'GET',
    url: BASE_URL,
    params: {
-      part: 'snippet, id',
+      part: 'id,snippet',  
       maxResults: '4',
       regionCode: 'ID',
       order: 'date',
