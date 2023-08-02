@@ -8,29 +8,37 @@ import Videos from "./Videos"
 import fetchAPI from "../utils/fetchAPI"
 
 const VideoDetail = () => {
-  const [videoDetail, setVideoDetail] = useState(null)
-  const id = 'S4_O3R4E06A'
+  const [videoDetail, setVideoDetail] = useState([])
+  const [videos, setVideos] = useState([])
+  const { id } = useParams()
 
   useEffect(() => {
     fetchAPI(`videos?id=${id}`)
-    .then(data => {
-      setVideoDetail(data.items[0])
-    })
+    .then(data =>   setVideoDetail(data.items[0]))
+
+    fetchAPI(`search?relatedToVideoId=${id}&maxResults=5`)
+    .then(data => setVideos(data.items))
   }, [id])
   console.log(videoDetail)
 
-  // if(!videoDetail?.snippet) return <Typography sx={{ color: '#fff', fontSize: '20px' }}>LOADING</Typography>
+  if(!videoDetail?.snippet) return <Typography sx={{ color: '#fff', fontSize: '20px' }}>LOADING</Typography>
 
-  const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail
+  const { 
+    snippet: { title, channelTitle }, 
+    statistics: { viewCount, likeCount  } 
+  } = videoDetail
 
   return (
-    <Box>
-      <Stack direction={{ xs: 'column', md: 'row' }}>
+    <Box flex={2} flexDirection={'column'}>
+      <Stack direction={{ xs: 'column', md: 'row' }} p={2}>
         <Box flex={1}>
-          <Box sx={{ width: '100%', position: 'sticky', top: '86px'}}>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} 
-            width='1/2'
-            controls/>
+          <Box 
+          sx={{ width: { xs: '100%'}, 
+          position: 'sticky', 
+          top: '86px',
+          }}>
+            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`}
+            width={'auto'} height={'500px'} controls/>
             <Typography sx={{ fontSize: '20px', color: '#fff' }}>
               {title}
             </Typography>
@@ -52,7 +60,11 @@ const VideoDetail = () => {
             </Stack>
           </Box>
         </Box>
+      <Box px={2} py={{ md: 1, xs: 5 }} justifyContent={`center`} alignItems={`center`}>
+        <Videos videos={videos} direction={'column'}  />
+      </Box>
       </Stack>
+
     </Box>
   )
 }
