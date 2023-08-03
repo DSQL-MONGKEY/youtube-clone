@@ -11,7 +11,6 @@ const Videos = ({ videos, direction }) => {
     justifyContent='start'
     gap={3} >
       {videos.map((video, idx) => (
-        console.log(video.id.videoId),
         <Box key={idx}> 
           {video.id.videoId && <VideoCard video={video}/>}
           {video.snippet.channelId && <ChannelCard channelDetail={video}/>}
