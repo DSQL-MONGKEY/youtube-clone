@@ -6,6 +6,7 @@ import { CheckCircle } from "@mui/icons-material"
 
 import Videos from "./Videos"
 import fetchAPI from "../utils/fetchAPI"
+import VideoDetailSkeleton from "../skeletons/VideoDetailSkeleton"
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState([])
@@ -14,14 +15,14 @@ const VideoDetail = () => {
 
   useEffect(() => {
     fetchAPI(`videos?id=${id}`)
-    .then(data =>   setVideoDetail(data.items[0]))
+    .then(data =>   setVideoDetail(data.items[1]))
 
     fetchAPI(`search?relatedToVideoId=${id}&maxResults=5`)
     .then(data => setVideos(data.items))
   }, [id])
   console.log(videoDetail)
 
-  if(!videoDetail?.snippet) return <Typography sx={{ color: '#fff', fontSize: '20px' }}>LOADING</Typography>
+  if(!videoDetail?.snippet) return <VideoDetailSkeleton/>
 
   const { 
     snippet: { title, channelTitle }, 
@@ -61,10 +62,9 @@ const VideoDetail = () => {
           </Box>
         </Box>
       <Box px={2} py={{ md: 1, xs: 5 }} justifyContent={`center`} alignItems={`center`}>
-        <Videos videos={videos} direction={'column'}  />
-      </Box>
+          <Videos videos={videos} direction={'column'} />
+        </Box>
       </Stack>
-
     </Box>
   )
 }
