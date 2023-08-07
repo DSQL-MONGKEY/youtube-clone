@@ -9,7 +9,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
       <Card 
          sx={{ width: { md: '350px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
          <Link to={videoId ? `/video/${videoId}` : 'none' }>
-            {!snippet ? 
+            {snippet ? 
                <CardMedia 
                   image={snippet?.thumbnails?.high?.url}
                   alt={snippet?.title}
@@ -25,7 +25,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
             <CardContent 
             sx={{ backgroundColor: '#1e1e1e',height: '120px' }}>
                <Link to={videoId ? `/channelDetail/${videoId}` : 'none'}>
-                  {!snippet ? 
+                  {snippet ? 
                      <Typography
                      variant='subtitle1'
                      fontWeight='bold'
@@ -51,7 +51,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
                   }
                </Link>
                <Link to={snippet?.channelId ? `/channelDetail/${snippet?.channelId}` : 'none'}>
-                  {!snippet ?
+                  {snippet ?
                      <Typography
                         variant='subtitle2'
                         fontWeight='bold'
