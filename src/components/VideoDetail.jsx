@@ -6,7 +6,7 @@ import { CheckCircle } from "@mui/icons-material"
 
 import Videos from "./Videos"
 import fetchAPI from "../utils/fetchAPI"
-import VideoDetailSkeleton from "../skeletons/VideoDetailSkeleton"
+import VideoBuffer from "./skeletons/VideoBuffer"
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState([])
@@ -21,8 +21,8 @@ const VideoDetail = () => {
     .then(data => setVideos(data.items))
   }, [id])
   console.log(videoDetail)
-
-  if(!videoDetail?.snippet) return <VideoDetailSkeleton />
+  
+  if(!videoDetail?.snippet) return <VideoBuffer/>
 
   const { 
     snippet: { title, channelTitle }, 
