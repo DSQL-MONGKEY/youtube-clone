@@ -1,4 +1,4 @@
-import { Box, CircularProgress, LinearProgress, Stack } from "@mui/material"
+import { Box, CircularProgress, Stack } from "@mui/material"
 
 const VideoBuffer = () => {
    return (
