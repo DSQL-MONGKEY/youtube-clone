@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Typography, Card, CardContent, CardMedia } from '@mui/material'
+import { Typography, Card, CardContent, CardMedia, Skeleton } from '@mui/material'
 import { CheckCircle } from '@mui/icons-material'
 
 const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
@@ -9,32 +9,65 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
       <Card 
          sx={{ width: { md: '350px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
          <Link to={videoId ? `/video/${videoId}` : 'none' }>
-            <CardMedia 
-               image={snippet?.thumbnails?.high?.url}
-               alt={snippet?.title}
-               sx={{ height: '180px', width: { md: '350px' }  }}
-            />
+            {!snippet ? 
+               <CardMedia 
+                  image={snippet?.thumbnails?.high?.url}
+                  alt={snippet?.title}
+                  sx={{ height: '180px', width: { md: '350px' }  }}
+               /> :
+               <Skeleton
+                  width={'350px'}
+                  height={'180px'}
+                  animation={'wave'}
+                  variant={'rectangular'}
+                  sx={{ bgcolor: '#3F2E3E' }}
+               />}
             <CardContent 
             sx={{ backgroundColor: '#1e1e1e',height: '120px' }}>
                <Link to={videoId ? `/channelDetail/${videoId}` : 'none'}>
-                  <Typography
-                  variant='subtitle1'
-                  fontWeight='bold'
-                  color='#FFF'>
-                     {snippet?.title.slice(0, 30)}
-                  </Typography>
+                  {!snippet ? 
+                     <Typography
+                     variant='subtitle1'
+                     fontWeight='bold'
+                     color='#FFF'>
+                        {snippet?.title.slice(0, 30)}
+                     </Typography> :
+                     <>
+                     <Skeleton
+                        width={'300px'}
+                        height={'20px'}
+                        animation={'wave'}
+                        variant={'text'}
+                        sx={{ bgcolor: '#331D2C' }}
+                     />
+                     <Skeleton
+                        width={'250px'}
+                        height={'20px'}
+                        animation={'wave'}
+                        variant={'text'}
+                        sx={{ bgcolor: '#331D2C' }}
+                     />
+                     </>
+                  }
                </Link>
                <Link to={snippet?.channelId ? `/channelDetail/${snippet?.channelId}` : 'none'}>
-                  <Typography
-                     variant='subtitle2'
-                     fontWeight='bold'
-                     color='gray'
-                  >
-                     {snippet?.channelTitle}
-                     <CheckCircle
-                        sx={{ fontSize: 12, color: 'gray', ml: '5px' }}
+                  {!snippet ?
+                     <Typography
+                        variant='subtitle2'
+                        fontWeight='bold'
+                        color='gray'>
+                        {snippet?.channelTitle}
+                           <CheckCircle 
+                              sx={{ fontSize: 12, color: 'gray', ml: '5px' }}/>
+                     </Typography> :
+                     <Skeleton
+                        width={'200px'}
+                        height={'20px'}
+                        animation={'wave'}
+                        variant={'text'}
+                        sx={{ bgcolor: '#331D2C' }}
                      />
-                  </Typography>
+                  }
                </Link>
             </CardContent>
          </Link>
