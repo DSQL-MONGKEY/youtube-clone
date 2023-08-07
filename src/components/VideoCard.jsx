@@ -16,7 +16,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
             />
             <CardContent 
             sx={{ backgroundColor: '#1e1e1e',height: '120px' }}>
-               <Link to={videoId ? `/channel/${videoId}` : 'none'}>
+               <Link to={videoId ? `/channelDetail/${videoId}` : 'none'}>
                   <Typography
                   variant='subtitle1'
                   fontWeight='bold'
@@ -24,7 +24,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
                      {snippet?.title.slice(0, 30)}
                   </Typography>
                </Link>
-               <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : 'none'}>
+               <Link to={snippet?.channelId ? `/channelDetail/${snippet?.channelId}` : 'none'}>
                   <Typography
                      variant='subtitle2'
                      fontWeight='bold'

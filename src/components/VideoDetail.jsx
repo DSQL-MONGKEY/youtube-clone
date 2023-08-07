@@ -15,14 +15,14 @@ const VideoDetail = () => {
 
   useEffect(() => {
     fetchAPI(`videos?id=${id}`)
-    .then(data =>   setVideoDetail(data.items[1]))
+    .then(data =>   setVideoDetail(data.items[0]))
 
     fetchAPI(`search?relatedToVideoId=${id}&maxResults=5`)
     .then(data => setVideos(data.items))
   }, [id])
   console.log(videoDetail)
 
-  if(!videoDetail?.snippet) return <VideoDetailSkeleton/>
+  if(!videoDetail?.snippet) return <VideoDetailSkeleton />
 
   const { 
     snippet: { title, channelTitle }, 

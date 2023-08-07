@@ -20,7 +20,7 @@ const ChannelCard = ({ channelDetail }) => {
 }
 
 ChannelCard.propTypes = {
-  channelDetail: PropTypes.any,
+  channelDetail: PropTypes.any, 
 }
 
 export default ChannelCard
