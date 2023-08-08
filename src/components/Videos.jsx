@@ -8,8 +8,8 @@ const Videos = ({ videos, direction }) => {
     <Stack 
     direction={direction || 'row'} 
     flexWrap='wrap'
-    justifyContent='start'
-    gap={3} >
+    justifyContent={{ xs: 'center', md: 'start' }}
+    gap={2} >
       {videos.map((video, idx) => (
         <Box key={idx}> 
           {video.id.videoId && <VideoCard video={video}/>}
