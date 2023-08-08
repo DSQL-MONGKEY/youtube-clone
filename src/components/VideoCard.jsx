@@ -7,13 +7,13 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
    console.log(snippet)
    return (
       <Card 
-         sx={{ width: { md: '350px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
+         sx={{ width: { xl: '350px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
          <Link to={videoId ? `/video/${videoId}` : 'none' }>
             {snippet ? 
                <CardMedia 
                   image={snippet?.thumbnails?.high?.url}
                   alt={snippet?.title}
-                  sx={{ height: '180px', width: { md: '350px' }  }}
+                  sx={{ height: '180px', width: { xs: '370px' ,md: '350px' }  }}
                /> :
                <Skeleton
                   width={'350px'}
