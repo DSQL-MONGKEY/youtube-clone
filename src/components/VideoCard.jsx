@@ -24,7 +24,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
                />}
             <CardContent 
             sx={{ backgroundColor: '#1e1e1e',height: '120px' }}>
-               <Link to={videoId ? `/channelDetail/${videoId}` : 'none'}>
+               <Link to={videoId ? `/video/${videoId}` : 'none'}>
                   {snippet ? 
                      <Typography
                      variant='subtitle1'
