@@ -20,8 +20,8 @@ const VideoDetail = () => {
     fetchAPI(`search?relatedToVideoId=${id}&maxResults=5`)
     .then(data => setVideos(data.items))
   }, [id])
+
   console.log(videoDetail)
-  
   if(!videoDetail?.snippet) return <VideoBuffer/>
 
   const { 
