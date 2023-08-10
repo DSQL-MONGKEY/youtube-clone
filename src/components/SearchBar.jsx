@@ -24,7 +24,7 @@ const SearchBar = () => {
          border: '1px solid #e3e3e3',
          pl: 2,
          mr: { sm: 5},
-         boxShadow: 'none' 
+         boxShadow: 'none'
       }}
       >
          <input 
