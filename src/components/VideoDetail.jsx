@@ -15,13 +15,12 @@ const VideoDetail = () => {
 
   useEffect(() => {
     fetchAPI(`videos?id=${id}`)
-    .then(data =>   setVideoDetail(data.items[0]))
+    .then(data => setVideoDetail(data.items[0]))
 
     fetchAPI(`search?relatedToVideoId=${id}&maxResults=5`)
     .then(data => setVideos(data.items))
   }, [id])
 
-  console.log(videoDetail)
   if(!videoDetail?.snippet) return <VideoBuffer/>
 
   const { 
@@ -88,7 +87,7 @@ const VideoDetail = () => {
 }
 
 /*
-Komponen ini bertugas untuk memutar dan menampilkan seputar detail video dengan cara mendapatkan {id} dari parameter url dan lalu mengirimkan nya pada url API
+Komponen ini bertugas untuk memutar dan menampilkan video dengan cara mendapatkan {id} dari parameter url dan lalu mengirimkan nya pada url API dan menampilkan video terkait yang sedang diputar
 */
 
 export default VideoDetail

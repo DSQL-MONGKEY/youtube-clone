@@ -4,11 +4,10 @@ import { Typography, Card, CardContent, CardMedia, Skeleton, CardActionArea } fr
 import { CheckCircle } from '@mui/icons-material'
 
 const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
-   console.log(snippet)
    return (
       <Card 
          sx={{ width: { xl: '350px', xs: '100%' }, boxShadow: 'none', borderRadius: 0 }}>
-            <CardActionArea>
+         <CardActionArea>
             <Link to={videoId ? `/video/${videoId}` : 'none' }>
                {snippet ? 
                   <CardMedia
