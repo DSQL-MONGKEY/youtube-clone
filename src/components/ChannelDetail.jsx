@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import fetchAPI from "../utils/fetchAPI"
 import VideoBuffer from "./skeletons/VideoBuffer"
 import ChannelCard from "./ChannelCard"
+import Videos from "./Videos"
 
 const ChannelDetail = () => {
   const [channelDetail, setChannelDetail] = useState(null)
@@ -14,7 +15,7 @@ const ChannelDetail = () => {
     fetchAPI(`channels?id=${id}`)
     .then(data => setChannelDetail(data.items[0]))
 
-    fetchAPI(`search?id=${id}`)
+    fetchAPI(`search?relatedToVideoId=${id}&maxResults=5`)
     .then(data => setChannelVideos(data.items))
   },[id])
   
@@ -37,6 +38,9 @@ const ChannelDetail = () => {
         }}
       />
       <ChannelCard channelDetail={channelDetail} />
+      <Box>
+        <Videos videos={channelVideos}/>
+      </Box>
     </Box>
   )
 }

@@ -23,6 +23,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
                      variant={'rectangular'}
                      sx={{ bgcolor: '#3F2E3E' }}
                   />}
+               </Link>
                <CardContent 
                sx={{ backgroundColor: '#1e1e1e',height: '120px' }}>
                   <Link to={videoId ? `/video/${videoId}` : 'none'}>
@@ -71,7 +72,6 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
                      }
                   </Link>
                </CardContent>
-            </Link>
          </CardActionArea>
       </Card>
    )
@@ -82,8 +82,7 @@ VideoCard.propTypes = {
 }
 
 /*
-<Parent: Feed.jsx>
-<ParentChild: Videos.jsx>
+<Parent: Videos.jsx>
 Komponen ini bertugas untuk menampilkan video dalam bentuk card yang dimana datanya berasa dari komponen Videos
 */
 
